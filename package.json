@@ -1,7 +1,7 @@
 {
   "name": "typescript-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "npm config set registry https://registry.npm.taobao.org/\r #安装\r npm install typescript@2.9.2 -g\r npm install ts-node@7.0.0 -g",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,16 @@
   "devDependencies": {
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
-  }
+  },
+  "dependencies": {
+    "@types/node": "^10.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leonardo-zyh/TypeScript-Demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Leonardo-zyh/TypeScript-Demo/issues"
+  },
+  "homepage": "https://github.com/Leonardo-zyh/TypeScript-Demo#readme"
 }

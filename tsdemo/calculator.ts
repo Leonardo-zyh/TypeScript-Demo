@@ -46,7 +46,7 @@
       }
       bindEvents() {
         this.container.addEventListener('click', event => {
-          if (event.target instanceof HTMLButtonElement) {
+          if (event.target instanceof HTMLButtonElement) {//判断button标签
             const text = event.target.textContent;
             if ('0123456789.'.indexOf(text) >= 0) {
               if (this.operator) {
@@ -80,14 +80,14 @@
           }
         });
       }
-      removeZero(string) {
+      removeZero(string:string) {
         return string.replace(/.0+$/g, '').replace(/\.0+e/, 'e');
       }
       getResult(n1: string, n2: string, operator: string): string {
         let numberN1: number = parseFloat(n1);
         let numberN2: number = parseFloat(n2);
         if (operator === '+') {
-          return (numberN1 + numberN2).toPrecision(12);
+          return (numberN1 + numberN2).toPrecision(12);//精度12位
         } else if (operator === '-') {
           return (numberN1 - numberN2).toPrecision(12);
         } else if (operator === '×') {
