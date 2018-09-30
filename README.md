@@ -81,6 +81,7 @@ textList:Array<string>
 代码顺序放到construction
 
 
+
 `基础类型`
 #JS 七种类型 + 枚举 + any + void + never
 #any    不确定类型
@@ -128,9 +129,10 @@ let b = [4,5,6]
 let c = [...a,...b]
 
 
-##接口
+##接口  (就是告诉你有什么)
+#interface      描述一个对象必须有哪些属性
 `当一个函数是一个对象的属性时，我们把这个函数称为对象的方法`
-#interface  描述一个对象必须有哪些属性
+
 #只读属性   
 做为变量使用的话用 const，若做为属性则使用readonly。
 ~~~
@@ -167,6 +169,7 @@ interface SearchFunc {
 }
 
 #如果这个对象是函数，而且这个对象的属性也是函数怎么办？
+~~~
 interface 二则运算 {
     (a: number, b: number): number;
     逆运算(a: number, b: number): number;
@@ -184,8 +187,10 @@ let fn = (): 二则运算 => {
 
 let add: 二则运算 = fn();
 console.log(add(1, 2));
+~~~
 
 #如果这个对象是数组怎么办？
+~~~
 interface StringArray {
 [index: number]: string;
 }
@@ -194,3 +199,68 @@ let myArray: StringArray;
 myArray = ["Bob", "Fred"];
 
 let myStr: string = myArray[0];
+~~~
+
+#interface可以继承(类型重复不同就报错)
+`interface Animal{}`
+`interface Human extends Animal{}`
+
+
+
+
+
+##类
+接口是低配类，类是高配接口
+
+#声明类
+class Point(){}
+let frank = new Point()
+
+#声明对象的非函数属性/函数属性，使用constructor。
+~~~
+    constructor(x=1,y=2){  
+        this.x = x;
+        this.y = y
+        this.move()
+    }
+    move():void{
+        console.log('move');  
+    }
+~~~
+
+#static 声明类属性/静态属性
+static xxx = 1
+console.log(Point.xxx);
+
+#class中this指向当前对象实例
+
+#类继承
+class a extends b{}
+constructor中必须有 super()
+
+#修饰符(作用范围)
+#private         私有属性(作用域class)
+#public          默认属性
+#protected       作用域class和子代
+
+#get/set模式
+~~~
+    private _age:number
+    get age(){
+        return this._age
+    }
+    set age(value:number){
+        if(value<0){
+            this._age=0
+        }
+    }
+~~~
+#抽象类一定有子类，当基类(爸爸)用，不能实例化
+~~~
+abstract class Animal {
+    abstract makeSound(): void;
+    move(): void {
+        console.log('roaming the earch...');
+    }
+}
+~~~ 
