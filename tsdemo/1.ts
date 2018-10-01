@@ -71,3 +71,17 @@ interface A {
     readonly r:string
 }
 
+
+//函数
+
+function hi(name:string,age=18):string|number{
+    //this,agument
+    console.log(`Hi,${name}${age}`);    //行参，站位
+    return 1
+}
+hi('frink') //实参
+
+//箭头函数，没有this和arguments
+let fn = (a:number,b:number)=>{
+    return a+b
+}

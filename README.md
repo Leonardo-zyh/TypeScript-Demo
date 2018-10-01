@@ -155,6 +155,7 @@ interface Human{
 * 使用临时变量（不推荐）
 接口就是用代码描述一个对象必须有什么属性。
 
+`? 表示随意存在`
 
 #如果这个属性是函数怎么办？
 interface Human{
@@ -264,3 +265,23 @@ abstract class Animal {
     }
 }
 ~~~ 
+
+
+##函数       特殊的对象，可以被调用
+方法         如果一个函数是另外一个对象的属性，就又叫做方法。
+
+#形参，实参。
+形参是声明arguments变量。arguments[i]]表示第几个参数。
+实参是传入的参数
+
+#this是参数
+this就是call的第一个参数
+prientThis.call(this,argument)
+add.call(undefined,1,2)
+
+#箭头函数
+没有this和arguments只作为参数引用。
+let fn = (a:number,b:number)=>{
+    return a+b
+}
+
