@@ -285,3 +285,51 @@ let fn = (a:number,b:number)=>{
     return a+b
 }
 
+
+##泛型
+一个组件可以支持多种(广泛)类型的数据。
+#泛型变量
+function returnIt<T>(arg:T[])：T[]{}
+
+#泛型类型   T当做类型占位符。
+~~~
+    function identity<T>(arg: T): T {return arg;}
+    let myIdentity:<T>(arg: T) => T = identity;
+    let stringAdd:identity<string> = (a1:string,b1:string):string=>{}
+~~~
+#泛型约束
+~~~
+    interface Lengthwise {length: number;}
+    function loggingIdentity<T extends Lengthwise>(arg: T): T {
+        console.log(arg.length);
+        return arg;
+    }
+~~~
+#泛型使用类
+~~~
+    function create<T>(c: { new(): T }) {return new c()}
+        class Humer { }
+        let frank = create<Humer>(Humer)
+~~~
+
+
+#this   是上下文判断(你所需要的)，在每次调用时改变
+#this是个参数
+点击事件是点击事件
+构造函数是实例
+函数是window
+对象内函数是对象
+let fn=b.a   fn()是window 
+
+##重载      支持多个函数，不支持不同个数参数
+function add(n1:number,n2:number)
+function add(n1:string,n2:string)
+function add(a,b){
+    return a+b
+}
+
+#类型兼容性
+TypeScript里的类型兼容性是基于结构子类型的。
+interface Human{name:string,age:number}
+let y = { name: 'Alice',age:21, location: 'Seattle' };
+x = y;
