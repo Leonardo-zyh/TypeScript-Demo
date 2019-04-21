@@ -10,7 +10,7 @@
         }
         introduceFamily(n?: number) {
             n = n || 0
-            console.log(`${createTabs(n)}${this.name}`);
+            console.log(`${creattabs(n)}${this.name}`);
             this.children.forEach((person) => {
                 person.introduceFamily(n + 1)
             });

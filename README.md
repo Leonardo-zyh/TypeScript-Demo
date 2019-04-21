@@ -57,7 +57,15 @@ npm install ts-node@7.0.0 -g
 #最简单的命令行程序
 #!/usr/bin/env ts-node
 console.log('hello world')
+process.argv
 "lib":["es2015","dom","es2016","es2017","es2018",]      声明版本
+
+npm init -y 
+npm i -D @types/node
+
+
+# TS ->tsc->JS
+类型检查，执行编译时错误
 
 #加法
 const a: number = parseInt(process.argv[2]);    parseInt类型转换
@@ -88,6 +96,8 @@ textList:Array<string>
 不清楚类型的变量指定一个类型。
 #枚举
 enum类型是对JavaScript标准数据类型的一个补充。
+通过枚举的状态进行，防止写错
+
 #void   表示没有任何类型
 当一个函数没有返回值时，其返回值类型是 void
 #Null 和 Undefined
@@ -204,7 +214,7 @@ let myStr: string = myArray[0];
 
 #interface可以继承(类型重复不同就报错)
 `interface Animal{}`
-`interface Human extends Animal{}`
+`interface Human extends Animal，organic{}`
 
 
 
@@ -219,7 +229,7 @@ let frank = new Point()
 
 #声明对象的非函数属性/函数属性，使用constructor。
 ~~~
-    constructor(x=1,y=2){  
+    constructor(public x=1,public y=2){  
         this.x = x;
         this.y = y
         this.move()
@@ -238,13 +248,20 @@ console.log(Point.xxx);
 #类继承
 class a extends b{}
 constructor中必须有 super()
+~~~
+class a extends b{
+    constructor(){
+        super()
+    }
+}
+~~~
 
 #修饰符(作用范围)
-#private         私有属性(作用域class)
-#public          默认属性
-#protected       作用域class和子代
+* private         私有属性(作用域class,其余不可用)
+* public          默认属性
+* protected       作用域class和子代
 
-#get/set模式
+#get/set模式 约束数据
 ~~~
     private _age:number
     get age(){
@@ -333,3 +350,4 @@ TypeScript里的类型兼容性是基于结构子类型的。
 interface Human{name:string,age:number}
 let y = { name: 'Alice',age:21, location: 'Seattle' };
 x = y;
+#soundness   可靠性
